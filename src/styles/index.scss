@@ -12,17 +12,22 @@
   --dark-link-color: lighten(#{$primary}, 15%);
 }
 
+* {
+  transition: 250ms;
+}
+
 body.light-mode {
   background-color: var(--background-color);
   color: var(--text-color);
 
   a {
-    color: var(--link-color);
+    color: black;
   }
 }
 
 body.dark-mode {
-  background-color: var(--dark-background-color);
+  // background-color: var(--dark-background-color);
+  background-color: lightgray;
   color: var(--dark-text-color);
 
   a {

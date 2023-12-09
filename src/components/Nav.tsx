@@ -14,6 +14,10 @@ const MyNavbar: React.FC<MyNavbarProps> = ({ darkMode, toggleDarkMode }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleNavLinkClick = () => {
+    handleClose();
+  };
+
   return (
     <Navbar
       bg={darkMode ? "dark" : "light"}
@@ -53,15 +57,21 @@ const MyNavbar: React.FC<MyNavbarProps> = ({ darkMode, toggleDarkMode }) => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <LinkContainer to="/home">
-                <Nav.Link>Hjem</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/features">
-                <Nav.Link>Funktioner</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/contact">
-                <Nav.Link>Kontakt</Nav.Link>
-              </LinkContainer>
+              <div onClick={handleNavLinkClick}>
+                <LinkContainer to="/home">
+                  <Nav.Link>Hjem</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div onClick={handleNavLinkClick}>
+                <LinkContainer to="/features">
+                  <Nav.Link>Funktioner</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div onClick={handleNavLinkClick}>
+                <LinkContainer to="/contact">
+                  <Nav.Link>Kontakt</Nav.Link>
+                </LinkContainer>
+              </div>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
