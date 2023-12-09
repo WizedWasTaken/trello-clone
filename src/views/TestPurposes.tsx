@@ -1,26 +1,27 @@
 import React from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
-interface TemplateProps {
-  darkMode: boolean;
-}
-
-const TemplateComponent: React.FC<TemplateProps> = ({ darkMode }) => {
-  // Define classes based on the darkMode prop
-  const containerClass = darkMode ? "bg-dark text-white" : "bg-light text-dark";
-  const buttonVariant = darkMode ? "secondary" : "primary";
+const TestPage: React.FC = () => {
+  const handleTestButtonClick = () => {
+    alert("Button clicked!");
+  };
 
   return (
-    <div
-      className={containerClass}
-      style={{ padding: "20px", minHeight: "100vh" }}
-    >
-      <h1>React Template with Light/Dark Mode</h1>
-      <p>
-        This is a simple template component that adapts to light and dark modes.
-      </p>
-      <button className={`btn btn-${buttonVariant}`}>Click Me</button>
-    </div>
+    <Container className="my-5">
+      <Row>
+        <Col className="text-center">
+          <h1>Test Page</h1>
+          <p>
+            This page is for testing various components and functionalities.
+          </p>
+
+          <Button variant="primary" onClick={handleTestButtonClick}>
+            Test Button
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default TemplateComponent;
+export default TestPage;

@@ -1,45 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Button, Offcanvas } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import brandImage from "../assets/logo.png";
+import "../styles/Nav.scss";
 
-interface MyNavbarProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-const MyNavbar: React.FC<MyNavbarProps> = ({ darkMode, toggleDarkMode }) => {
+const MyNavbar: React.FC = () => {
   const [show, setShow] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleNavLinkClick = () => handleClose();
 
-  const handleNavLinkClick = () => {
-    handleClose();
+  const toggleDarkMode = () => {
+    const newTheme = isDarkMode ? "light" : "dark";
+    document.documentElement.setAttribute("data-bs-theme", newTheme);
+    localStorage.setItem("darkMode", newTheme);
+    setIsDarkMode(!isDarkMode);
   };
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("darkMode") || "light";
+    document.documentElement.setAttribute("data-bs-theme", storedTheme);
+    setIsDarkMode(storedTheme === "dark");
+  }, []);
+
   return (
-    <Navbar
-      bg={darkMode ? "dark" : "light"}
-      variant={darkMode ? "dark" : "light"}
-      expand={false}
-    >
+    <Navbar expand={false}>
       <Container>
-        <Navbar.Brand href="#home" className="navbar-brand-custom">
+        <Navbar.Brand className="navbar-brand-custom">
           <img
-            alt=""
+            alt="Brand Logo"
             src={brandImage}
             width="30"
             height="30"
-            className="d-inline-block align-top"
+            className=""
           />{" "}
           Noah Task Manager
         </Navbar.Brand>
         <Button
           onClick={toggleDarkMode}
-          variant={darkMode ? "light" : "secondary"}
+          className="theme-toggle-button"
+          style={{
+            backgroundColor: "transparent",
+            border: "none",
+            color: isDarkMode ? "#f8f9fa" : "#343a40",
+          }}
         >
-          {darkMode ? "Light Mode" : "Dark Mode"}
+          {isDarkMode ? "🌙" : "☀️"}
         </Button>
         <Navbar.Toggle onClick={handleShow} aria-controls="offcanvasNavbar" />
         <Navbar.Offcanvas
@@ -48,12 +56,9 @@ const MyNavbar: React.FC<MyNavbarProps> = ({ darkMode, toggleDarkMode }) => {
           placement="end"
           show={show}
           onHide={handleClose}
-          className={darkMode ? "bg-dark text-white" : "bg-light"}
         >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel">
-              Find Hvad Du Vil
-            </Offcanvas.Title>
+            <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">

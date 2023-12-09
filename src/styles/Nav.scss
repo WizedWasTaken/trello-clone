@@ -1,0 +1,7 @@
+.theme-toggle-button {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-button:active {
+  transform: rotate(180deg);
+}
