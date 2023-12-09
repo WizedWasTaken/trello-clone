@@ -28,16 +28,18 @@ const MyNavbar: React.FC = () => {
   return (
     <Navbar expand={false}>
       <Container>
-        <Navbar.Brand className="navbar-brand-custom">
-          <img
-            alt="Brand Logo"
-            src={brandImage}
-            width="30"
-            height="30"
-            className=""
-          />{" "}
-          Noah Task Manager
-        </Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand className="navbar-brand-custom">
+            <img
+              alt="Brand Logo"
+              src={brandImage}
+              width="30"
+              height="30"
+              className=""
+            />{" "}
+            Noah Task Manager
+          </Navbar.Brand>
+        </LinkContainer>
         <Button
           onClick={toggleDarkMode}
           className="theme-toggle-button"
@@ -63,7 +65,7 @@ const MyNavbar: React.FC = () => {
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <div onClick={handleNavLinkClick}>
-                <LinkContainer to="/home">
+                <LinkContainer to="/">
                   <Nav.Link>Hjem</Nav.Link>
                 </LinkContainer>
               </div>
