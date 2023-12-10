@@ -17,7 +17,7 @@ const NotFoundPage: React.FC = () => {
           <h1>404: Lost in Space</h1>
           <p>We can't seem to find the page you're looking for.</p>
           <img
-            src="src\assets\astronaut-removebg-preview.png" // Update with the correct path
+            src="src\assets\astronaut-removebg-preview.png"
             alt="Funny Astronaut"
             className="img-fluid"
             style={{ maxWidth: "400px" }}
