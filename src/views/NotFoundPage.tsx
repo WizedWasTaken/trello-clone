@@ -7,7 +7,7 @@ const NotFoundPage: React.FC = () => {
 
   // Function to navigate back to the home page
   const handleGoHome = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   return (
