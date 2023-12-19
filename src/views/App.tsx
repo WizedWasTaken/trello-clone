@@ -4,25 +4,17 @@ import HomePage from "./HomePage";
 import FeaturesPage from "./FeaturesPage";
 import ContactPage from "./ContactPage";
 import TestPage from "./TestPurposes";
-import NotFoundPage from "./NotFoundPage"; // A 404 page or similar
+import NotFoundPage from "./NotFoundPage";
 
-interface AppProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-const App: React.FC<AppProps> = ({ darkMode }) => {
+const App: React.FC = () => {
   return (
-    <div className={darkMode ? "dark-mode" : "light-mode"}>
+    <div>
       <Routes>
-        <Route path="/home" element={<HomePage darkMode={darkMode} />} />
-        <Route
-          path="/features"
-          element={<FeaturesPage darkMode={darkMode} />}
-        />
-        <Route path="/contact" element={<ContactPage darkMode={darkMode} />} />
-        <Route path="/test" element={<TestPage darkMode={darkMode} />} />
-        <Route path="*" element={<NotFoundPage darkMode={darkMode} />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/features" element={<FeaturesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/test" element={<TestPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

@@ -1,26 +1,55 @@
 import React from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  FloatingLabel,
+} from "react-bootstrap";
 
-interface TemplateProps {
-  darkMode: boolean;
-}
-
-const TemplateComponent: React.FC<TemplateProps> = ({ darkMode }) => {
-  // Define classes based on the darkMode prop
-  const containerClass = darkMode ? "bg-dark text-white" : "bg-light text-dark";
-  const buttonVariant = darkMode ? "secondary" : "primary";
-
+const ContactPage: React.FC = () => {
   return (
-    <div
-      className={containerClass}
-      style={{ padding: "20px", minHeight: "100vh" }}
-    >
-      <h1>React Template with Light/Dark Mode</h1>
-      <p>
-        This is a simple template component that adapts to light and dark modes.
-      </p>
-      <button className={`btn btn-${buttonVariant}`}>Click Me</button>
-    </div>
+    <Container className="my-5 py-4">
+      <Row className="justify-content-center">
+        <Col md={8}>
+          <h1 className="text-center mb-4">Kontakt Os</h1>
+          <Form>
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Navn"
+              className="mb-3"
+            >
+              <Form.Control type="input" placeholder="Johnny" />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Email addresse"
+              className="mb-3"
+            >
+              <Form.Control type="email" placeholder="navn@noahnielsen.dk" />
+            </FloatingLabel>
+            <FloatingLabel controlId="floatingTextarea2" label="Kommentar">
+              <Form.Control
+                as="textarea"
+                placeholder="Skriv en kommentar her"
+                style={{ minHeight: "150px" }}
+              />
+            </FloatingLabel>
+            <div className="d-grid">
+              <Button
+                variant="primary"
+                onClick={() => alert("VIRKER IKKE ENDNU")}
+                className="mt-5"
+              >
+                Send Besked
+              </Button>
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default TemplateComponent;
+export default ContactPage;

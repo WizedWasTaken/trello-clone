@@ -1,26 +1,38 @@
 import React from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-interface TemplateProps {
-  darkMode: boolean;
-}
+const NotFoundPage: React.FC = () => {
+  const navigate = useNavigate();
 
-const TemplateComponent: React.FC<TemplateProps> = ({ darkMode }) => {
-  // Define classes based on the darkMode prop
-  const containerClass = darkMode ? "bg-dark text-white" : "bg-light text-dark";
-  const buttonVariant = darkMode ? "secondary" : "primary";
+  // Function to navigate back to the home page
+  const handleGoHome = () => {
+    navigate("/");
+  };
 
   return (
-    <div
-      className={containerClass}
-      style={{ padding: "20px", minHeight: "100vh" }}
-    >
-      <h1>React Template with Light/Dark Mode</h1>
-      <p>
-        This is a simple template component that adapts to light and dark modes.
-      </p>
-      <button className={`btn btn-${buttonVariant}`}>Click Me</button>
-    </div>
+    <Container className="text-center my-5">
+      <Row>
+        <Col>
+          <h1>404: Lost in Space</h1>
+          <p>We can't seem to find the page you're looking for.</p>
+          <img
+            src="src\assets\astronaut-removebg-preview.png"
+            alt="Funny Astronaut"
+            className="img-fluid"
+            style={{ maxWidth: "400px" }}
+          />
+          <p>
+            But look on the bright side, you've discovered a secret part of the
+            universe!
+          </p>
+          <Button variant="primary" onClick={handleGoHome} className="me-2">
+            Go Back Home
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default TemplateComponent;
+export default NotFoundPage;
