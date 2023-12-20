@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Container, Button, Offcanvas } from "react-bootstrap";
+import { Navbar, Nav, Container, Form, Offcanvas } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import brandImage from "../assets/logo.png";
+import flashbangMp3Fil from "./../assets/flashbang.mp3";
+
 import "../styles/Nav.scss";
+
+const audio = new Audio(flashbangMp3Fil);
 
 const MyNavbar: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -17,6 +21,14 @@ const MyNavbar: React.FC = () => {
     document.documentElement.setAttribute("data-bs-theme", newTheme);
     localStorage.setItem("darkMode", newTheme);
     setIsDarkMode(!isDarkMode);
+
+    // Flashbang lyd ved skift til lightmode.
+    // if (newTheme === "light") {
+    //   audio.play();
+    // } else {
+    audio.pause();
+    //   audio.currentTime = 0;
+    // }
   };
 
   useEffect(() => {
@@ -37,20 +49,19 @@ const MyNavbar: React.FC = () => {
               height="30"
               className=""
             />{" "}
-            Noah Task Manager
+            Lotus RP
           </Navbar.Brand>
         </LinkContainer>
-        <Button
-          onClick={toggleDarkMode}
-          className="theme-toggle-button"
-          style={{
-            backgroundColor: "transparent",
-            border: "none",
-            color: isDarkMode ? "#f8f9fa" : "#343a40",
-          }}
-        >
-          {isDarkMode ? "🌙" : "☀️"}
-        </Button>
+        <Form>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            // label={isDarkMode ? "Dark Mode" : "FLASHBANG!!!"}
+            label={isDarkMode ? "Dark Mode" : "Light Mode"}
+            checked={isDarkMode}
+            onChange={toggleDarkMode}
+          />
+        </Form>
         <Navbar.Toggle onClick={handleShow} aria-controls="offcanvasNavbar" />
         <Navbar.Offcanvas
           id="offcanvasNavbar"
@@ -67,11 +78,6 @@ const MyNavbar: React.FC = () => {
               <div onClick={handleNavLinkClick}>
                 <LinkContainer to="/">
                   <Nav.Link>Hjem</Nav.Link>
-                </LinkContainer>
-              </div>
-              <div onClick={handleNavLinkClick}>
-                <LinkContainer to="/features">
-                  <Nav.Link>Funktioner</Nav.Link>
                 </LinkContainer>
               </div>
               <div onClick={handleNavLinkClick}>

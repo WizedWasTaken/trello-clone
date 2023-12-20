@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <Container fluid>
       <Row>
         <Col className="text-center">
-          <p>&copy; {new Date().getFullYear()} Noah Task Manager</p>
+          <p>&copy; {new Date().getFullYear()} Lotus RP</p>
         </Col>
       </Row>
     </Container>
