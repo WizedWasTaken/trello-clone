@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -14,13 +13,13 @@ import "./styles/index.scss";
 // eslint-disable-next-line react-refresh/only-export-components
 const Main = () => {
   return (
-    <React.StrictMode>
-      <Router>
-        <NavBar />
-        <App />
-        <Footer />
-      </Router>
-    </React.StrictMode>
+    // <React.StrictMode>
+    <Router basename="/lotusrp">
+      <NavBar />
+      <App />
+      <Footer />
+    </Router>
+    // </React.StrictMode>
   );
 };
 

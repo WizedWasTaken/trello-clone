@@ -40,7 +40,7 @@ const MyNavbar: React.FC = () => {
   return (
     <Navbar expand={false}>
       <Container>
-        <LinkContainer to="/">
+        <LinkContainer to="/lotusrp">
           <Navbar.Brand className="navbar-brand-custom">
             <img
               alt="Brand Logo"
@@ -52,16 +52,6 @@ const MyNavbar: React.FC = () => {
             Lotus RP
           </Navbar.Brand>
         </LinkContainer>
-        <Form>
-          <Form.Check
-            type="switch"
-            id="custom-switch"
-            // label={isDarkMode ? "Dark Mode" : "FLASHBANG!!!"}
-            label={isDarkMode ? "Dark Mode" : "Light Mode"}
-            checked={isDarkMode}
-            onChange={toggleDarkMode}
-          />
-        </Form>
         <Navbar.Toggle onClick={handleShow} aria-controls="offcanvasNavbar" />
         <Navbar.Offcanvas
           id="offcanvasNavbar"
@@ -72,17 +62,30 @@ const MyNavbar: React.FC = () => {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              // label={isDarkMode ? "Dark Mode" : "FLASHBANG!!!"}
+              label={isDarkMode ? "" : ""}
+              checked={isDarkMode}
+              onChange={toggleDarkMode}
+            />
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <div onClick={handleNavLinkClick}>
-                <LinkContainer to="/">
+                <LinkContainer to="/lotusrp">
                   <Nav.Link>Hjem</Nav.Link>
                 </LinkContainer>
               </div>
               <div onClick={handleNavLinkClick}>
-                <LinkContainer to="/contact">
+                <LinkContainer to="/kontakt">
                   <Nav.Link>Kontakt</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div onClick={handleNavLinkClick}>
+                <LinkContainer to="/regler">
+                  <Nav.Link>Regler</Nav.Link>
                 </LinkContainer>
               </div>
             </Nav>
