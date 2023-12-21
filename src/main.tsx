@@ -2,25 +2,27 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // Import React Components
-import App from "./views/App"; // Adjust the import path as needed
-import NavBar from "./components/Nav"; // Adjust the import path as needed
-import Footer from "./components/Footer"; // Adjust the import path as needed
+import App from "./views/App";
+import NavBar from "./components/Nav";
+import Footer from "./components/Footer";
 
 // Stylesheets
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/index.scss";
 
-// eslint-disable-next-line react-refresh/only-export-components
 const Main = () => {
   return (
-    // <React.StrictMode>
     <Router basename="/lotusrp">
       <NavBar />
       <App />
       <Footer />
     </Router>
-    // </React.StrictMode>
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<Main />);
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  console.error("Root element not found!");
+} else {
+  ReactDOM.createRoot(rootElement).render(<Main />);
+}

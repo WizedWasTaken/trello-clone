@@ -7,6 +7,7 @@ import {
   Form,
   Col,
   Dropdown,
+  Modal,
 } from "react-bootstrap";
 
 interface Rule {
@@ -21,9 +22,12 @@ const RulePage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("/lotusrp/api/fetchDatabase.php")
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    fetch(`${apiUrl}/API/fetchDatabase.php`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -35,20 +39,23 @@ const RulePage: React.FC = () => {
           setRules(data);
         }
       })
-      .catch((error) => console.error("FEJL:", error));
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   const displayNextRule = () => {
-    setCurrentIndex((prevIndex) => prevIndex + 1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex < rules.length - 1 ? prevIndex + 1 : prevIndex
+    );
   };
 
   const displayLastRule = () => {
-    setCurrentIndex((prevIndex) => prevIndex - 1);
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
   };
 
   const handleItemClick = (id: number) => {
     const selectedRuleIndex = rules.findIndex((rule) => rule.id === id);
     setCurrentIndex(selectedRuleIndex);
+    setShowModal(true);
   };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,6 +72,12 @@ const RulePage: React.FC = () => {
   const handleCategoryChange = (category: string | null) => {
     setSelectedCategory(category);
   };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const currentRule = rules[currentIndex];
 
   const filteredRules = rules.filter(
     (rule) =>
@@ -120,7 +133,7 @@ const RulePage: React.FC = () => {
               <ListGroup.Item
                 key={`rule-${rule.id}`}
                 active={rule.id === rules[currentIndex].id}
-                variant={currentIndex % 2 === 0 ? "light" : "dark"}
+                variant={index % 2 === 0 ? "light" : "dark"}
                 onClick={() => handleItemClick(rule.id)}
                 style={{ cursor: "pointer" }}
               >
@@ -130,14 +143,25 @@ const RulePage: React.FC = () => {
           ))}
         </ListGroup>
       </Row>
-      <Row className="mt-3">
-        {currentIndex < rules.length && searchTerm === "" && (
-          <div>
-            <h4>{rules[currentIndex].title}</h4>
-            <p>{rules[currentIndex].description}</p>
-          </div>
-        )}
-      </Row>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{currentRule?.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{currentRule?.description}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Luk
+          </Button>
+          {currentIndex > 0 && (
+            <Button onClick={displayLastRule}>Forrige Regel</Button>
+          )}
+          {currentIndex < filteredRules.length - 1 && (
+            <Button onClick={displayNextRule}>Næste Regel</Button>
+          )}
+        </Modal.Footer>
+      </Modal>
       <Row className="mt-3 justify-content-center">
         <Col className="text-center">
           {currentIndex > 0 && (
