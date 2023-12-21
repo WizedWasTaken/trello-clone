@@ -40,7 +40,7 @@ const MyNavbar: React.FC = () => {
   return (
     <Navbar expand={false}>
       <Container>
-        <LinkContainer to="/lotusrp">
+        <LinkContainer to="/">
           <Navbar.Brand className="navbar-brand-custom">
             <img
               alt="Brand Logo"
@@ -74,7 +74,7 @@ const MyNavbar: React.FC = () => {
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <div onClick={handleNavLinkClick}>
-                <LinkContainer to="/lotusrp">
+                <LinkContainer to="/">
                   <Nav.Link>Hjem</Nav.Link>
                 </LinkContainer>
               </div>

@@ -120,7 +120,7 @@ const RulePage: React.FC = () => {
               <ListGroup.Item
                 key={`rule-${rule.id}`}
                 active={rule.id === rules[currentIndex].id}
-                variant={rule.id % 2 === 0 ? "light" : "dark"}
+                variant={currentIndex % 2 === 0 ? "light" : "dark"}
                 onClick={() => handleItemClick(rule.id)}
                 style={{ cursor: "pointer" }}
               >

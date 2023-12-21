@@ -3,10 +3,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Access-Control-Allow-Origin: *');
 
-$host = '193.23.126.244';
-$dbname = 'lotusrpwebsite';
-$username = 'abdi';
-$password = 'abdi';
+$host = 'noahnielsen.dk.mysql';
+$dbname = 'noahnielsen_dkfivemtestsite';
+$username = 'noahnielsen_dkfivemtestsite';
+$password = '123456';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
