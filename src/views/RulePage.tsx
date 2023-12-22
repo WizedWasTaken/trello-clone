@@ -27,7 +27,7 @@ const RulePage: React.FC = () => {
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    fetch(`${apiUrl}/API/fetchDatabase.php`)
+    fetch(`${apiUrl}/api/fetchDatabase.php`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

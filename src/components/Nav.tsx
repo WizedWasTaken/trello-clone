@@ -23,12 +23,12 @@ const MyNavbar: React.FC = () => {
     setIsDarkMode(!isDarkMode);
 
     // Flashbang lyd ved skift til lightmode.
-    // if (newTheme === "light") {
-    //   audio.play();
-    // } else {
-    audio.pause();
-    //   audio.currentTime = 0;
-    // }
+    if (newTheme === "light") {
+      audio.pause();
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+    }
   };
 
   useEffect(() => {

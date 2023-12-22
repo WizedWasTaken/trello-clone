@@ -26,3 +26,5 @@ if (!rootElement) {
 } else {
   ReactDOM.createRoot(rootElement).render(<Main />);
 }
+
+export default Main;
