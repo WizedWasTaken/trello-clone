@@ -38,7 +38,7 @@ const ContactPage: React.FC = () => {
             </FloatingLabel>
             <div className="d-grid">
               <Button
-                variant="primary"
+                variant="success"
                 onClick={() => alert("VIRKER IKKE ENDNU")}
                 className="mt-5"
               >

@@ -8,7 +8,7 @@ const audio = new Audio(flashbangMp3Fil);
 
 const MyNavbar: React.FC = () => {
   const [show, setShow] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,7 +30,7 @@ const MyNavbar: React.FC = () => {
   };
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("darkMode") || "light";
+    const storedTheme = localStorage.getItem("darkMode") || "dark";
     document.documentElement.setAttribute("data-bs-theme", storedTheme);
     setIsDarkMode(storedTheme === "dark");
   }, []);
@@ -63,8 +63,8 @@ const MyNavbar: React.FC = () => {
             <Form.Check
               type="switch"
               id="custom-switch"
-              // label={isDarkMode ? "Dark Mode" : "FLASHBANG!!!"}
-              label={isDarkMode ? "" : ""}
+              aria-checked={isDarkMode}
+              label={""}
               checked={isDarkMode}
               onChange={toggleDarkMode}
             />
@@ -84,6 +84,11 @@ const MyNavbar: React.FC = () => {
               <div onClick={handleNavLinkClick}>
                 <LinkContainer to="/regler">
                   <Nav.Link>Regler</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div onClick={handleNavLinkClick}>
+                <LinkContainer to="/discord">
+                  <Nav.Link>Discord</Nav.Link>
                 </LinkContainer>
               </div>
             </Nav>

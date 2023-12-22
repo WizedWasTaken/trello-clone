@@ -104,7 +104,7 @@ const RulePage: React.FC = () => {
       </Row>
       <Row className="justify-content-center">
         <Dropdown onSelect={(category) => handleCategoryChange(category)}>
-          <Dropdown.Toggle id="dropdown-categories">
+          <Dropdown.Toggle id="dropdown-categories" variant="success">
             {selectedCategory ? `Kategori: ${selectedCategory}` : "Alle Regler"}
           </Dropdown.Toggle>
           <Dropdown.Menu>

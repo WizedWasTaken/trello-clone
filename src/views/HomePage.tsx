@@ -56,19 +56,73 @@ const HomePage: React.FC = () => {
     return () => {
       clearInterval(interval);
     };
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const connectToFiveMServer = () => {
+    alert("VIRKER IKKE");
+    const fivemLink = `fivem://connect/IP IKKE SAT IND`;
+
+    window.open(fivemLink);
+  };
+
+  // Inline styles
+  const buttonContainerStyle: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    width: "60%",
+  };
 
   return (
     <Container fluid className="text-center homepage-container">
       <Row className="my-5">
-        <Col>
+        <Col
+          xs={{ span: 12, order: 2 }}
+          md={{ span: 4, order: 1 }}
+          className="mb-3 mt-3"
+        >
+          <h1>Venstre</h1>
+        </Col>
+        <Col
+          xs={{ span: 12, order: 1 }}
+          md={{ span: 4, order: 2 }}
+          className="mb-3 mt-3"
+        >
           <h1 className="display-2">LotusRP</h1>
           <h4 className="display-7 mb-5">
             Din vej til <b>{displayedText}</b> RP oplevelser
           </h4>
-          <Button variant="success" size="lg">
-            Tilslut dig
-          </Button>
+          <div style={buttonContainerStyle}>
+            <Button
+              variant="success"
+              style={{ ...buttonStyle, marginBottom: "1rem" }}
+              onClick={() =>
+                window.open("https://discord.gg/lotusrp", "_blank")
+              }
+            >
+              Tilslut Discorden
+            </Button>
+            <Button
+              variant="success"
+              onClick={connectToFiveMServer}
+              style={buttonStyle}
+            >
+              Tilslut Serveren
+            </Button>
+          </div>
+        </Col>
+        <Col
+          xs={{ span: 12, order: 3 }}
+          md={{ span: 4, order: 3 }}
+          className="mb-3 mt-3"
+        >
+          <h1>Højre</h1>
         </Col>
       </Row>
     </Container>
