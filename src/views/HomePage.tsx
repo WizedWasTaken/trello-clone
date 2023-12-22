@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  });
 
   return (
     <Container fluid className="text-center homepage-container">
