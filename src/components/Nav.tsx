@@ -4,8 +4,6 @@ import { LinkContainer } from "react-router-bootstrap";
 import brandImage from "../assets/logo.png";
 import flashbangMp3Fil from "./../assets/flashbang.mp3";
 
-import "../styles/Nav.scss";
-
 const audio = new Audio(flashbangMp3Fil);
 
 const MyNavbar: React.FC = () => {

@@ -8,6 +8,7 @@ import {
   Col,
   Dropdown,
   Modal,
+  Spinner,
 } from "react-bootstrap";
 
 interface Rule {
@@ -23,6 +24,7 @@ const RulePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -39,7 +41,8 @@ const RulePage: React.FC = () => {
           setRules(data);
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error("Error:", error))
+      .finally(() => setLoading(false));
   }, []);
 
   const displayNextRule = () => {
@@ -117,31 +120,41 @@ const RulePage: React.FC = () => {
         </Dropdown>
       </Row>
       <Row className="justify-content-center mt-3">
-        <ListGroup>
-          {filteredRules.map((rule, index) => (
-            <React.Fragment key={rule.id}>
-              {(index === 0 ||
-                rule.category !== filteredRules[index - 1].category) && (
-                <ListGroup.Item
-                  key={`separator-${rule.category}`}
-                  variant="secondary"
-                  className="fw-bold text-uppercase text-center"
-                >
-                  {rule.category}
-                </ListGroup.Item>
-              )}
-              <ListGroup.Item
-                key={`rule-${rule.id}`}
-                active={rule.id === rules[currentIndex].id}
-                variant={index % 2 === 0 ? "light" : "dark"}
-                onClick={() => handleItemClick(rule.id)}
-                style={{ cursor: "pointer" }}
-              >
-                {`${index + 1}. ${rule.title}`}
-              </ListGroup.Item>
-            </React.Fragment>
-          ))}
-        </ListGroup>
+        {loading ? (
+          <Col className="text-center">
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </Col>
+        ) : (
+          <Col>
+            <ListGroup>
+              {filteredRules.map((rule, index) => (
+                <React.Fragment key={rule.id}>
+                  {(index === 0 ||
+                    rule.category !== filteredRules[index - 1].category) && (
+                    <ListGroup.Item
+                      key={`separator-${rule.category}`}
+                      variant="secondary"
+                      className="fw-bold text-uppercase text-center"
+                    >
+                      {rule.category}
+                    </ListGroup.Item>
+                  )}
+                  <ListGroup.Item
+                    key={`rule-${rule.id}`}
+                    active={rule.id === rules[currentIndex].id}
+                    variant={index % 2 === 0 ? "light" : "dark"}
+                    onClick={() => handleItemClick(rule.id)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {`${index + 1}. ${rule.title}`}
+                  </ListGroup.Item>
+                </React.Fragment>
+              ))}
+            </ListGroup>
+          </Col>
+        )}
       </Row>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
@@ -174,15 +187,6 @@ const RulePage: React.FC = () => {
           )}
         </Col>
       </Row>
-      {/* {filteredRules.length === 0}{" "}
-      {
-        <Row className="mt-3 justify-content-center">
-          <Col className="text-center">
-            <h4>Ingen regler fundet</h4>
-            <p className="lead">Kontakt eventuelt en udvikler.</p>
-          </Col>
-        </Row>
-      } */}
     </Container>
   );
 };

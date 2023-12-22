@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 
 // Stylesheets
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/index.scss";
 
 const Main = () => {
   return (
