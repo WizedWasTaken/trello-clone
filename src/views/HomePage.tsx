@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
+// Changelog & Nyheder import
+import ChangeLog from "../components/ChangeLog";
+import Nyheder from "../components/Nyheder";
+
 const HomePage: React.FC = () => {
   const messages = [
     "sjove",
@@ -87,7 +91,7 @@ const HomePage: React.FC = () => {
           md={{ span: 4, order: 1 }}
           className="mb-3 mt-3"
         >
-          <h1>Venstre</h1>
+          <Nyheder />
         </Col>
         <Col
           xs={{ span: 12, order: 1 }}
@@ -122,7 +126,7 @@ const HomePage: React.FC = () => {
           md={{ span: 4, order: 3 }}
           className="mb-3 mt-3"
         >
-          <h1>Højre</h1>
+          <ChangeLog />
         </Col>
       </Row>
     </Container>

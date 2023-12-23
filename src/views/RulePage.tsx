@@ -29,7 +29,7 @@ const RulePage: React.FC = () => {
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    fetch(`${apiUrl}/api/fetchDatabase.php`)
+    fetch(`${apiUrl}/api/rules.php`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -167,24 +167,40 @@ const RulePage: React.FC = () => {
           <Button variant="secondary" onClick={handleCloseModal}>
             Luk
           </Button>
-          {currentIndex > 0 && (
-            <Button onClick={displayLastRule}>Forrige Regel</Button>
-          )}
-          {currentIndex < filteredRules.length - 1 && (
-            <Button onClick={displayNextRule}>Næste Regel</Button>
-          )}
+          <Button
+            variant="success"
+            onClick={displayLastRule}
+            disabled={currentIndex <= 0}
+          >
+            Forrige Regel
+          </Button>
+          <Button
+            onClick={displayNextRule}
+            variant="success"
+            disabled={currentIndex >= filteredRules.length - 1}
+          >
+            Næste Regel
+          </Button>
         </Modal.Footer>
       </Modal>
       <Row className="mt-3 justify-content-center">
         <Col className="text-center">
-          {currentIndex > 0 && (
-            <Button onClick={displayLastRule}>Forrige Regel</Button>
-          )}
+          <Button
+            variant="success"
+            onClick={displayLastRule}
+            disabled={currentIndex <= 0}
+          >
+            Forrige Regel
+          </Button>
         </Col>
         <Col className="text-center">
-          {currentIndex < filteredRules.length - 1 && (
-            <Button onClick={displayNextRule}>Næste Regel</Button>
-          )}
+          <Button
+            variant="success"
+            onClick={displayNextRule}
+            disabled={currentIndex >= filteredRules.length - 1}
+          >
+            Næste Regel
+          </Button>
         </Col>
       </Row>
     </Container>

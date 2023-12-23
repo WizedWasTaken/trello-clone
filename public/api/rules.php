@@ -1,5 +1,6 @@
 <?php
 require_once 'db.php';
+header('Access-Control-Allow-Origin: *');
 
 try {
     $stmt = $pdo->query("SELECT id, title, description, category FROM rules ORDER BY category, id");
