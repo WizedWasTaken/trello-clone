@@ -37,7 +37,7 @@ const MyNavbar: React.FC = () => {
 
   return (
     <Navbar expand={false}>
-      <Container fluid>
+      <Container>
         <LinkContainer to="/">
           <Navbar.Brand className="navbar-brand-custom">
             <img
