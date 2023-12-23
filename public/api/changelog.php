@@ -6,7 +6,12 @@ header('Access-Control-Allow-Origin: *');
 include 'db.php';
 
 // Fetch changelog entries from the database
-$sql = "SELECT id, title, description, image_url, created_at FROM changelog ORDER BY id DESC";
+$sql = "SELECT c.id, c.title, c.description, c.image_url, c.date_added, GROUP_CONCAT(cc.change_description ORDER BY cc.id) AS changes
+        FROM changelog c
+        LEFT JOIN changelog_changes cc ON c.id = cc.changelog_id
+        GROUP BY c.id
+        ORDER BY c.date_added DESC";
+
 try {
     $result = $pdo->query($sql);
 

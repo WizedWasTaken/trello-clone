@@ -7,6 +7,7 @@ interface ChangeLogEntry {
   description: string;
   changes: string[];
   image_url?: string;
+  date_added: string;
 }
 
 const ChangeLog = () => {
@@ -19,12 +20,17 @@ const ChangeLog = () => {
     fetch(`${apiUrl}/api/changelog.php`)
       .then((response) => response.json())
       .then((data) => {
-        const updatedData = data.map((entry: ChangeLogEntry) => ({
-          ...entry,
-        }));
-        setChangeLogData(updatedData);
+        console.log("Raw API response:", data); // Log the raw response
+        if (Array.isArray(data)) {
+          const updatedData = data.map((entry: ChangeLogEntry) => ({
+            ...entry,
+          }));
+          setChangeLogData(updatedData);
+        } else {
+          console.error("Changelog data is not an array:", data);
+        }
       })
-      .catch((error) => console.error("Fejl med at finde changelog:", error));
+      .catch((error) => console.error("Error fetching changelog:", error));
   }, []);
 
   if (!changeLogData.length) {
@@ -34,19 +40,11 @@ const ChangeLog = () => {
   return (
     <Container fluid className="text-center">
       <Row className="mt-5">
-        <Col md={{ span: 8, offset: 3 }}>
+        <Col md={{ span: 10 }}>
           <div
             id="changelog-container"
             className="changelog-box"
             ref={containerRef}
-            style={{
-              maxHeight: containerRef.current
-                ? `${containerRef.current.clientHeight}px`
-                : "80vh",
-              overflowY: "auto",
-              scrollbarWidth: "thin",
-              scrollbarColor: "lightgray transparent",
-            }}
           >
             <Accordion>
               {changeLogData.map((entry: ChangeLogEntry, index) => (
@@ -60,15 +58,24 @@ const ChangeLog = () => {
                   </Accordion.Header>
                   <Accordion.Body>
                     <div>
-                      <p>{entry.description}</p>
-                      {entry.changes && (
+                      {entry.date_added && (
                         <p>
-                          <strong>Changes:</strong>{" "}
-                          {entry.changes
-                            ? entry.changes.join(", ")
-                            : "Kunne ikke finde ændringer."}
+                          <strong>Dato Tilføjet:</strong> {entry.date_added}
                         </p>
                       )}
+                      <p>{entry.description}</p>
+                      {entry.changes &&
+                        Array.isArray(entry.changes) &&
+                        entry.changes.length > 0 && (
+                          <div>
+                            <strong>Changes:</strong>
+                            <ul>
+                              {entry.changes.map((change, changeIndex) => (
+                                <li key={changeIndex}>{change}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       {entry.image_url && (
                         <img
                           src={entry.image_url}

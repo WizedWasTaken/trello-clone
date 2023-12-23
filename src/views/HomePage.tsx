@@ -19,6 +19,7 @@ const HomePage: React.FC = () => {
   ];
 
   const [displayedText, setDisplayedText] = useState("");
+  const [showLotusRPColumn, setShowLotusRPColumn] = useState(true);
 
   useEffect(() => {
     let currentIndex = 0;
@@ -70,6 +71,14 @@ const HomePage: React.FC = () => {
     window.open(fivemLink);
   };
 
+  const toggleLotusRPColumn = () => {
+    setShowLotusRPColumn((prevShowLotusRPColumn) => !prevShowLotusRPColumn);
+  };
+
+  const getChangeLogColSpan = () => {
+    return showLotusRPColumn ? 4 : 8;
+  };
+
   // Inline styles
   const buttonContainerStyle: React.CSSProperties = {
     display: "flex",
@@ -87,47 +96,58 @@ const HomePage: React.FC = () => {
     <Container fluid className="text-center homepage-container">
       <Row className="my-5">
         <Col
+          xs={{ span: 12, order: 3 }}
+          md={{ span: getChangeLogColSpan(), order: 3 }}
+          className="mb-3 mt-3 box"
+        >
+          <div style={buttonContainerStyle}>
+            <Button
+              variant="secondary"
+              onClick={toggleLotusRPColumn}
+              style={buttonStyle}
+            >
+              {showLotusRPColumn ? "Større Changelog" : "Mindre Changelog"}
+            </Button>
+          </div>
+          <ChangeLog />
+        </Col>
+        <Col
           xs={{ span: 12, order: 2 }}
           md={{ span: 4, order: 1 }}
           className="mb-3 mt-3"
         >
           <Nyheder />
         </Col>
-        <Col
-          xs={{ span: 12, order: 1 }}
-          md={{ span: 4, order: 2 }}
-          className="mb-3 mt-3"
-        >
-          <h1 className="display-2">LotusRP</h1>
-          <h4 className="display-7 mb-5">
-            Din vej til <b>{displayedText}</b> RP oplevelser
-          </h4>
-          <div style={buttonContainerStyle}>
-            <Button
-              variant="success"
-              style={{ ...buttonStyle, marginBottom: "1rem" }}
-              onClick={() =>
-                window.open("https://discord.gg/lotusrp", "_blank")
-              }
-            >
-              Tilslut Discorden
-            </Button>
-            <Button
-              variant="success"
-              onClick={connectToFiveMServer}
-              style={buttonStyle}
-            >
-              Tilslut Serveren
-            </Button>
-          </div>
-        </Col>
-        <Col
-          xs={{ span: 12, order: 3 }}
-          md={{ span: 4, order: 3 }}
-          className="mb-3 mt-3"
-        >
-          <ChangeLog />
-        </Col>
+        {showLotusRPColumn && (
+          <Col
+            xs={{ span: 12, order: 1 }}
+            md={{ span: 4, order: 2 }}
+            className="mb-3 mt-3"
+          >
+            <h1 className="display-2">LotusRP</h1>
+            <h4 className="display-7 mb-5">
+              Din vej til <b>{displayedText}</b> RP oplevelser
+            </h4>
+            <div style={buttonContainerStyle}>
+              <Button
+                variant="success"
+                style={{ ...buttonStyle, marginBottom: "1rem" }}
+                onClick={() =>
+                  window.open("https://discord.gg/lotusrp", "_blank")
+                }
+              >
+                Tilslut Discorden
+              </Button>
+              <Button
+                variant="success"
+                onClick={connectToFiveMServer}
+                style={buttonStyle}
+              >
+                Tilslut Serveren
+              </Button>
+            </div>
+          </Col>
+        )}
       </Row>
     </Container>
   );
