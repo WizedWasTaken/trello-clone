@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Accordion, ListGroup } from "react-bootstrap";
-import "../assets/scss/scrollbar.scss";
+import "../assets/scss/scrollbar.css";
 
 interface ChangeLogEntry {
   id: number;
@@ -38,7 +38,6 @@ const ChangeLog = () => {
 
   const handleAccordionToggle = (eventKey: string | null) => {
     setActiveAccordion(activeAccordion === eventKey ? null : eventKey);
-
     const expandedItem = document.getElementById(`changelog-panel-${eventKey}`);
     if (expandedItem) {
       expandedItem.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -57,7 +56,7 @@ const ChangeLog = () => {
             id="changelog-container"
             className="changelog-box"
             ref={containerRef}
-            style={{ maxHeight: "500px", overflowY: "auto" }}
+            style={{ maxHeight: "650px", overflowY: "auto" }}
           >
             <Accordion
               activeKey={activeAccordion}

@@ -1,6 +1,6 @@
 #changelog-container {
-  scrollbar-width: thin; // For Firefox
-  scrollbar-color: #e6e1e19a #252525; // For Firefox
+  scrollbar-width: thin;
+  scrollbar-color: #e6e1e19a #252525;
 }
 
 #changelog-container::-webkit-scrollbar {
