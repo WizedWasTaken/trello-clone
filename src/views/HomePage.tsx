@@ -76,7 +76,7 @@ const HomePage: React.FC = () => {
   };
 
   const getChangeLogColSpan = () => {
-    return showLotusRPColumn ? 4 : 8;
+    return showLotusRPColumn ? 4 : 12;
   };
 
   // Inline styles
@@ -111,13 +111,15 @@ const HomePage: React.FC = () => {
           </div>
           <ChangeLog />
         </Col>
-        <Col
-          xs={{ span: 12, order: 2 }}
-          md={{ span: 4, order: 1 }}
-          className="mb-3 mt-3"
-        >
-          <Nyheder />
-        </Col>
+        {showLotusRPColumn && (
+          <Col
+            xs={{ span: 12, order: 2 }}
+            md={{ span: 4, order: 1 }}
+            className="mb-3 mt-3"
+          >
+            <Nyheder />
+          </Col>
+        )}
         {showLotusRPColumn && (
           <Col
             xs={{ span: 12, order: 1 }}

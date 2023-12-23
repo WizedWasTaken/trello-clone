@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Accordion, ListGroup } from "react-bootstrap";
+import "../assets/scss/scrollbar.scss";
 
 interface ChangeLogEntry {
   id: number;
@@ -12,6 +13,7 @@ interface ChangeLogEntry {
 
 const ChangeLog = () => {
   const [changeLogData, setChangeLogData] = useState<ChangeLogEntry[]>([]);
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -20,10 +22,11 @@ const ChangeLog = () => {
     fetch(`${apiUrl}/api/changelog.php`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Raw API response:", data); // Log the raw response
+        console.log("Raw API response:", data);
         if (Array.isArray(data)) {
           const updatedData = data.map((entry: ChangeLogEntry) => ({
             ...entry,
+            changes: Array.isArray(entry.changes) ? entry.changes : [],
           }));
           setChangeLogData(updatedData);
         } else {
@@ -33,8 +36,17 @@ const ChangeLog = () => {
       .catch((error) => console.error("Error fetching changelog:", error));
   }, []);
 
+  const handleAccordionToggle = (eventKey: string | null) => {
+    setActiveAccordion(activeAccordion === eventKey ? null : eventKey);
+
+    const expandedItem = document.getElementById(`changelog-panel-${eventKey}`);
+    if (expandedItem) {
+      expandedItem.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   if (!changeLogData.length) {
-    return <div>Loader changelog.</div>;
+    return <div>Loading changelog...</div>;
   }
 
   return (
@@ -45,8 +57,13 @@ const ChangeLog = () => {
             id="changelog-container"
             className="changelog-box"
             ref={containerRef}
+            style={{ maxHeight: "500px", overflowY: "auto" }}
           >
-            <Accordion>
+            <Accordion
+              activeKey={activeAccordion}
+              // @ts-expect-error Det virker korrekt på test, hold øje med dette.
+              onSelect={handleAccordionToggle}
+            >
               {changeLogData.map((entry: ChangeLogEntry, index) => (
                 <Accordion.Item
                   key={entry.id}
@@ -58,30 +75,31 @@ const ChangeLog = () => {
                   </Accordion.Header>
                   <Accordion.Body>
                     <div>
-                      {entry.date_added && (
-                        <p>
-                          <strong>Dato Tilføjet:</strong> {entry.date_added}
-                        </p>
-                      )}
+                      <strong>Beskrivelse:</strong>
                       <p>{entry.description}</p>
-                      {entry.changes &&
-                        Array.isArray(entry.changes) &&
-                        entry.changes.length > 0 && (
-                          <div>
-                            <strong>Changes:</strong>
-                            <ul>
-                              {entry.changes.map((change, changeIndex) => (
-                                <li key={changeIndex}>{change}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
+                      {entry.changes.length > 0 && (
+                        <div className="mt-2">
+                          <strong>Ændringer:</strong>
+                          <ListGroup variant="flush">
+                            {entry.changes.map((change, changeIndex) => (
+                              <ListGroup.Item key={changeIndex}>
+                                {change}
+                              </ListGroup.Item>
+                            ))}
+                          </ListGroup>
+                        </div>
+                      )}
                       {entry.image_url && (
                         <img
                           src={entry.image_url}
-                          alt="BILLEDE KUNNE IKKE FINDES"
+                          alt=""
                           style={{ maxWidth: "100%" }}
                         />
+                      )}
+                      {entry.date_added && (
+                        <p className="mt-2">
+                          <strong>Dato Tilføjet:</strong> {entry.date_added}
+                        </p>
                       )}
                     </div>
                   </Accordion.Body>
