@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
 
   const connectToFiveMServer = () => {
     alert("VIRKER IKKE");
-    const fivemLink = `fivem://connect/IP IKKE SAT IND`;
+    const fivemLink = `fivem://connect/lotusrp.dk`;
 
     window.open(fivemLink);
   };
@@ -114,7 +114,7 @@ const HomePage: React.FC = () => {
               variant="success"
               style={{ ...buttonStyle, marginBottom: "1rem" }}
               onClick={() =>
-                window.open("https://discord.gg/lotusrp", "_blank")
+                window.open("https://discord.gg/ejDJHkytAR", "_blank")
               }
             >
               Tilslut Discorden

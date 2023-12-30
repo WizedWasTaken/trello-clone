@@ -77,8 +77,8 @@ const MyNavbar: React.FC = () => {
                 </LinkContainer>
               </div>
               <div onClick={handleNavLinkClick}>
-                <LinkContainer to="/kontakt">
-                  <Nav.Link>Kontakt</Nav.Link>
+                <LinkContainer to="/ansøg">
+                  <Nav.Link>Ansøg</Nav.Link>
                 </LinkContainer>
               </div>
               <div onClick={handleNavLinkClick}>

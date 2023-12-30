@@ -19,3 +19,12 @@
 #changelog-container::-webkit-scrollbar-thumb:hover {
   background-color: green;
 }
+
+.accordion-button:not(.collapsed) {
+  background-color: #1987547c !important;
+  color: white !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  fill: #6ea8fe !important;
+}

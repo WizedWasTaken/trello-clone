@@ -22,7 +22,6 @@ const ChangeLog = () => {
     fetch(`${apiUrl}/api/changelog.php`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Raw API response:", data);
         if (Array.isArray(data)) {
           const updatedData = data.map((entry: ChangeLogEntry) => ({
             ...entry,

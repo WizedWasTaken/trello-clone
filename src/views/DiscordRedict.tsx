@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 
 const DiscordRedirect: React.FC = () => {
   useEffect(() => {
-    window.location.replace("https://discord.com/invite/lotusrp");
+    window.location.replace("https://discord.gg/ejDJHkytAR");
   }, []);
 
   return (
