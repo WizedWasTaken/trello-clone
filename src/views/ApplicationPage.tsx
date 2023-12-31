@@ -64,7 +64,7 @@ const ApplicationComponent: React.FC<{ application: Application }> = ({
     return (
       <Container fluid>
         <div className="text-center">
-          <h1>Tryk på en ansøgnings knap, for at sende en ansøgning.</h1>
+          <h1>Tryk på en ansøgnings knap, for at se ansøgnings formularen.</h1>
         </div>
       </Container>
     );
@@ -145,16 +145,18 @@ const ApplicationPage: React.FC = () => {
               </span>
             </OverlayTrigger>
           ) : (
-            <Button
-              key={index}
-              variant="outline-dark"
-              className="mx-2"
-              size="lg"
-              style={{ backgroundColor: app.color, color: "white" }}
-              onClick={() => handleAppClick(app)}
-            >
-              {app.name}
-            </Button>
+            app.name.length > 1 && (
+              <Button
+                key={index}
+                variant="outline-dark"
+                className="mx-2"
+                size="lg"
+                style={{ backgroundColor: app.color, color: "white" }}
+                onClick={() => handleAppClick(app)}
+              >
+                {`${app.name}`}
+              </Button>
+            )
           )
         )}
       </div>

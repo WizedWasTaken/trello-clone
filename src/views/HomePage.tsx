@@ -1,10 +1,19 @@
+/**
+ * Represents the home page component.
+ *
+ * This component displays a homepage with a typewriter effect and buttons to connect to a server and Discord.
+ *
+ * @returns The rendered home page component.
+ */
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-// Changelog & Nyheder import
 import ChangeLog from "../components/ChangeLog";
 import Nyheder from "../components/Nyheder";
 
+/**
+ * Functional component for the home page.
+ */
 const HomePage: React.FC = () => {
   const messages = [
     "sjove",
@@ -24,6 +33,9 @@ const HomePage: React.FC = () => {
     let currentIndex = 0;
     let interval: NodeJS.Timeout;
 
+    /**
+     * Function to create typewriter effect.
+     */
     const typewriterEffect = () => {
       const message = messages[currentIndex];
       let currentCharIndex = 0;
@@ -63,14 +75,18 @@ const HomePage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /**
+   * Connects to the FiveM server by opening a FiveM link in a new window.
+   */
   const connectToFiveMServer = () => {
-    alert("VIRKER IKKE");
     const fivemLink = `fivem://connect/lotusrp.dk`;
 
     window.open(fivemLink);
   };
 
-  // Inline styles
+  /**
+   * CSS properties for the button container.
+   */
   const buttonContainerStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
@@ -79,10 +95,18 @@ const HomePage: React.FC = () => {
     width: "100%",
   };
 
+  /**
+   * CSS properties for the button.
+   */
   const buttonStyle: React.CSSProperties = {
     width: "60%",
   };
 
+  /**
+   * Renders the home page component.
+   *
+   * @returns The rendered home page component.
+   */
   return (
     <Container fluid className="text-center homepage-container">
       <Row className="my-5">

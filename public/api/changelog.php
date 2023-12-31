@@ -24,7 +24,7 @@ try {
         header('Content-Type: application/json');
         echo json_encode($changelogData);
     } else {
-        echo "No changelog entries found.";
+        echo json_encode(['error' => 'No changelog entries found.']);
     }
 } catch (PDOException $e) {
     echo json_encode(['error' => 'Error: ' . $e->getMessage()]);
