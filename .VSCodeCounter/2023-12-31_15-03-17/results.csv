@@ -1,0 +1,45 @@
+"filename", "language", "HTML", "Markdown", "JSON with Comments", "TypeScript", "JSON", "TypeScript JSX", "CSS", "JavaScript", "PHP", "comment", "blank", "total"
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\.eslintrc.cjs", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 1, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\README.md", "Markdown", 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 9, 31
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\ToDo.md", "Markdown", 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 8
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\application.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 8, 33
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\changelog.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 8, 35
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\data.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 4, 14
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\db.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 3, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\homepageImages.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 6, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\nyheder.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 7, 27
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\api\rules.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 3, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\assets\index-5jezx2A9.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 16, 0, 56, 1, 73
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\assets\index-8zFM2BUa.css", "CSS", 0, 0, 0, 0, 0, 0, 2, 0, 0, 3, 1, 6
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\dist\index.html", "HTML", 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 16
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\index.html", "HTML", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\package-lock.json", "JSON", 0, 0, 0, 0, 4038, 0, 0, 0, 0, 0, 1, 4039
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\package.json", "JSON", 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 1, 41
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\application.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 8, 33
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\changelog.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 8, 35
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\data.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 4, 14
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\db.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 3, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\homepageImages.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 6, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\nyheder.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 7, 27
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\playerCount.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, 9
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\rules.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 3, 19
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\public\api\serverStatus.php", "PHP", 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 9
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\assets\scss\scrollbar.css", "CSS", 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 7, 31
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\components\ChangeLog.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 105, 0, 0, 0, 1, 9, 115
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\components\Footer.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 3, 17
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\components\Nav.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 93, 0, 0, 0, 1, 9, 103
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\components\Nyheder.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 88, 0, 0, 0, 1, 10, 99
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\main.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 22, 0, 0, 0, 2, 6, 30
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\404Page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 3, 13
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\App.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 21, 0, 0, 0, 1, 3, 25
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\ApplicationPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 154, 0, 0, 0, 0, 15, 169
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\ContactPage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 53, 0, 0, 0, 0, 3, 56
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\DiscordRedict.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 16, 0, 0, 0, 1, 4, 21
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\HomePage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 116, 0, 0, 0, 28, 17, 161
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\RulePage.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 194, 0, 0, 0, 0, 17, 211
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\views\Test.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 6, 35
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\src\vite-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\tsconfig.json", "JSON with Comments", 0, 0, 21, 0, 0, 0, 0, 0, 0, 2, 3, 26
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\tsconfig.node.json", "JSON", 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 1, 11
+"c:\Projekter\Projekter\[LotusRP]\lotusrphjemmeside\vite.config.ts", "TypeScript", 0, 0, 0, 22, 0, 0, 0, 0, 0, 1, 2, 25
+"Total", "-", 27, 26, 21, 22, 4088, 915, 26, 34, 271, 98, 219, 5747
